@@ -126,6 +126,8 @@ module nubus
    // Output to nubus the 
    assign nub_adn  = nub_adoe ? ~nub_ad : 'bZ;
 
+   assign mem_valid = slv_myslotcy;
+
    // ==========================================================================
    // Parity checking
    // ==========================================================================
