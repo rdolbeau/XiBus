@@ -53,6 +53,8 @@ module nubus_cpubus
    assign cpu_tm1n_o = tmadn[3];
    assign cpu_tm0n_o = tmadn[2];
 
+   
+   assign cpu_masterd_o = 0; // FIXME, this is normally set after a delay introduced by the pair of 74LSL161
 
 endmodule
 

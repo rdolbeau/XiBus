@@ -71,7 +71,7 @@ module nubus_driver
    assign nub_rqstn_o  = rqstoe  ?  0 : 'bZ;
 
    assign drv_mstdn_o  = mstdn;
-   assign rqstoen_o    = ~rqstoe;
+   assign nub_rqstoen_o = ~rqstoe;
    
    // ----------------------------------------------------
    // Main logic

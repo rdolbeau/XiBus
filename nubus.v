@@ -62,11 +62,11 @@ module nubus
 
     /* Processor bus signals connected to processor */
 
-    output        cpu_valid,
+    input         cpu_valid,
     input [31:0]  cpu_addr,
     input [31:0]  cpu_wdata,
-    input         cpu_ready,
-    output [ 3:0] cpu_write,
+    input  [ 3:0] cpu_write,
+    output        cpu_ready,
     output [31:0] cpu_rdata,
     input         cpu_lock,
     input         cpu_eclr,
@@ -78,9 +78,7 @@ module nubus
     // Access to superslot area ($sXXXXXXX where <s> is card id)
     output        mem_super,
     // Access to local memory on the card
-    output        mem_local,
-    // Access to any memory on the card
-    output        mem_myslot
+    output        mem_local
   );
 
   `include "nubus.svh"
@@ -175,7 +173,6 @@ module nubus
       .nub_tm1n(nub_tm1n), // Transition mode 1 (Read/Write)
       .nub_tm0n(nub_tm0n),
       .mem_ready(mem_ready),
-      .mem_myslot(mem_myslot),
       .mst_timeout(mst_timeout),
 
       .slv_slave_o(slv_slave), // Slave mode
@@ -206,7 +203,7 @@ module nubus
       .nub_ackn(nub_ackn), // End of transfer
       .arb_grant(arb_grant), // Grant access
       .cpu_lock(cpu_lock), // Address line
-      .cpu_masterd(cpu_valid), // Master mode (delayed)
+      .cpu_masterd(cpu_masterd), // Master mode (delayed)
 
       .mst_lockedn_o(mst_lockedn), // Locked or not tranfer
       .mst_arbdn_o(mst_arbdn),

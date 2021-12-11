@@ -35,7 +35,6 @@ module nubus_slave
    input                  nub_ackn, // Transfer end
    input                  nub_tm1n, // Transition mode 1 (Read/Write)
    input                  nub_tm0n, //
-   input                  mem_myslot, // Memory bus selected by address
    input                  mem_ready, // Complete memory transfer
    input                  mst_timeout, // Master timeout event
 

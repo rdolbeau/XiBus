@@ -46,7 +46,6 @@ module nubus_slave_tb ();
    tri1 [31:0]         mem_addr;
    tri1 [31:0]         mem_wdata;
    tri1 [31:0]         mem_rdata;
-   tri1                mem_myslot;
    tri1                mem_myexp;
    tri1 	       mem_stdslot;
    tri1 	       mem_local;       
@@ -88,7 +87,6 @@ module nubus_slave_tb ();
       .mem_addr(mem_addr),
       .mem_wdata(mem_wdata),
       .mem_rdata(mem_rdata),
-      .mem_myslot(mem_myslot),
       .mem_super(mem_myexp),
       .mem_stdslot(mem_stdslot),
       .mem_local(mem_local),
@@ -146,6 +144,7 @@ module nubus_slave_tb ();
       tst_startn <= 1;
       tst_statusn<= TMN_TRY_AGAIN_LATER;
       tst_tmn    <= TMN_NOP;
+      tst_ackn <= 1;
 
       @ (posedge nub_clkn);
       @ (posedge nub_clkn);
