@@ -19,7 +19,7 @@ module nubus_arbiter
 
    wire          arb2oen, arb1oen, arb0oen;
    wire          arb3, arb2, arb1, arb0;
-   wire          grant_n;
+   wire          grantn;
 
    assign arbn[3] = arb3 ? 0 : 'bZ;
    assign arbn[2] = arb2 ? 0 : 'bZ;
