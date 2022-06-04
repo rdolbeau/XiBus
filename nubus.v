@@ -100,7 +100,7 @@ module nubus
                   mst_busyn, mst_ownern, mst_arbcyn;
    wire unsigned [31:0] cpu_ad;
    wire unsigned [31:0] slv_addr;
-   wire           cpu_tm0n, nub_qstoen, drv_tmoen, cpu_tm1n, cpu_tm0, 
+   wire           cpu_tm0n, nub_rqstoen, drv_tmoen, cpu_tm1n, cpu_tm0,
                   cpu_masterd, cpu_error;
    wire [1:0]     mis_errorn;
    wire           drv_mstdn;
@@ -236,7 +236,7 @@ module nubus
       .nub_ackn_o(nub_ackn), // Achnowlege
       .nub_startn_o(nub_startn), // Transfer start
       .nub_rqstn_o(nub_rqstn), // Bus request
-      .nub_rqstoen_o(nub_qstoen), // Bus request enable
+      .nub_rqstoen_o(nub_rqstoen), // Bus request enable
       .drv_tmoen_o(drv_tmoen), // Transfer mode enable
       .drv_mstdn_o(drv_mstdn) // Guess: Slave sends /ACK. Master responds with /MSTDN, which allows slave to clear /ACK and listen for next transaction.
       );

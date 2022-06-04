@@ -53,7 +53,7 @@ module nubus_master
    wire   timeout;
 
    assign mst_lockedn_o = ~locked;
-   assign mst_arbdn_o = arbdn;
+   assign mst_arbdn_o = ~arbdn;
    assign mst_busyn_o = ~busy;
    assign mst_ownern_o = ~owner;
    assign mst_dtacyn_o = ~dtacy;
@@ -90,7 +90,7 @@ module nubus_master
 		   /*holding for locked access*/
 		   ;
 	 adrcy  <=   ~cpu_lock & ~owner & arbcy & arbdn & arb_grant & ~busy & ~start
-		   | ~cpu_lock & ~owner & arbcy & arbdn & arb_grant &  busy * ack
+		   | ~cpu_lock & ~owner & arbcy & arbdn & arb_grant &  busy & ack
 		   /*START& if not locking*/
 		   | owner & locked & ~adrcy & ~dtacy & slv_master & ~reset
 		   /*START& for locking case, after LOCK-ATTN*/
@@ -107,7 +107,7 @@ module nubus_master
 		   /*hold before DTACY*/
 		   | owner & dtacy & ~ack & slv_master & ~reset
 		   /*non-locking, wait until ACK* */
-		   | owner & locked & slv_master * ~reset
+		   | owner & locked & slv_master & ~reset
 		   /*for LOCKing case, hold for NULL-ATTN*/
 		   ;
 	 busy   <= ~busy & start & ~ack

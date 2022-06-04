@@ -112,7 +112,7 @@ module nubus_driver
 		     /* always set for xxx-ATTN */
 		     ;
    
-   assign mstdn    = owner & ~locked & dtacy * ack
+   assign mstdn    = owner & ~locked & dtacy & ack
 		     /* done all tail end of normal cycle */
                	     | owner & ~locked & arbcy & ~adrcy & dtacy 
                	     /* done dor locked cases */
